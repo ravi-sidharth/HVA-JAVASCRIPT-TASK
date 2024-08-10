@@ -86,20 +86,20 @@ console.log(longFruits)
 
 
 //f. Create a New Filtered and Modified Array using filter() and map():
-aFruitsUpper=[]
-fruits.filter(function(fruit){
+
+const aFruitsUpper=[]
+fruits.filter ( function(fruit) {
 	for (let i=0; i<fruit.length; i++) {
-		if (fruit[i]=='a') {
-			aFruitsUpper.push(fruit.toUpperCase())
+		if (fruit[i]=='a'){
+			aFruitsUpper.push(fruit)
 			break
+			}
 		}
-	}
-	return aFruitsUpper
-
-
+	aFruitsUpper.map( function(fruit) {
+			aFruitUpper=UpperCase(fruit)
+			})
+	
 })
-
-console.log(aFruitsUpper)
 
 
 
