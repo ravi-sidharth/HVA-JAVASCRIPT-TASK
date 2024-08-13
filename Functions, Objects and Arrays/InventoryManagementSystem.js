@@ -35,14 +35,14 @@ addProduct(7,"Hero",999,4)
 function updateProduct(id,quantity) {
     inventory.find((product)=>{
        if(product.id ==id) {
-        product.quantity+=quantity
+        product.quantity=quantity
        }
     })
 
 }
 
 updateProduct(2,4)
-// console.log(inventory)
+console.log(inventory)
 
 function updateProductWithMap(id,quantity) {
     inventory.map((Product)=> {
@@ -64,7 +64,6 @@ function removeProduct(id) {
        }
         
     })
-  
 }
 
 removeProduct(3)

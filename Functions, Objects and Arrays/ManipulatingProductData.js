@@ -52,3 +52,4 @@ products.forEach( (product)=>{
 })
 
 console.log(totalPrice)
+
