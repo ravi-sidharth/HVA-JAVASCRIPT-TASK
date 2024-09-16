@@ -38,7 +38,6 @@ temperatures.map(function(nums) {
 	})
 console.log(temperaturesInFahrenheit)
 
-
 temperatures.map(nums => {
 	return temperaturesInFahrenheit.push((nums*9/5)+32)
 	})

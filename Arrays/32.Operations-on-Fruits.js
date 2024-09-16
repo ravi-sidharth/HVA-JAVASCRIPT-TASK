@@ -12,7 +12,7 @@ fruits.forEach ( (fruits) => console.log(fruits) )
 
 //c. Calculate Total Characters Using forEach()
 
-let totalCharacters =0
+let totalCharacters=0
 
 fruits.forEach(function(fruit) {
 	for (let i=0; i<fruit.length; i++) {
@@ -88,7 +88,7 @@ console.log(longFruits)
 //f. Create a New Filtered and Modified Array using filter() and map():
 
 const aFruitsUpper=[]
-fruits.filter ( function(fruit) {
+fruits.filter (function(fruit) {
 	for (let i=0; i<fruit.length; i++) {
 		if (fruit[i]=='a'){
 			aFruitsUpper.push(fruit)
@@ -96,7 +96,7 @@ fruits.filter ( function(fruit) {
 			}
 		}
 	aFruitsUpper.map( function(fruit) {
-			aFruitUpper=UpperCase(fruit)
+			aFruitsUpper=UpperCase(fruit)
 			})
 	
 })

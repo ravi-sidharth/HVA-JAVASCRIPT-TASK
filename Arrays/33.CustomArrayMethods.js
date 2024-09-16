@@ -3,11 +3,11 @@ function forEachArray(array,callback) {
 		callback(array)
 		}
 	function callbackEach(array) {
-		for (let i=0; i<array.length; i++) {
+		for(let i=0; i<array.length; i++) {
 			console.log(array[i])
 	}
 }
-// forEachArray([1,2,4,5,6,7,7],callback)
+forEachArray([1,2,4,5,6,7,7],callbackEach)
 
 
 // b. mapArray Function: 

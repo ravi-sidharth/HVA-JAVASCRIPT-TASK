@@ -78,8 +78,6 @@ class Student {
             city:city,
             pin_code:pin_code
         }
-   
-
     }
 
     greet(){
@@ -90,26 +88,20 @@ class Student {
         const {country,city,pin_code} =this.address;
         return `${country}, ${city}-${pin_code}`
     }
-
-
 }
 
 let myData = new Student("ravi","@ravi",21,"india","dharamshala",17056)
 console.log(myData);
 
-
-let friend = new Student ("Rahul","rahul.ai",22,"india","Kalyanpuri",110091)
+let friend = new Student("Rahul","rahul.ai",22,"india","Kalyanpuri",110091)
 console.log(friend)
 
-let another_student = new Student ("Deepak","deepak.chatgpt",23,"india","Kanpur",140532)
+let another_student = new Student("Deepak","deepak.chatgpt",23,"india","Kanpur",140532)
 console.log(another_student)
 
 console.log(myData.greet());
 console.log(friend.greet());
 console.log(another_student.greet());
-
-
-
 
 console.log(myData.getfullAddress())
 console.log(friend.getfullAddress());
