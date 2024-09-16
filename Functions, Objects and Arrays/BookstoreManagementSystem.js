@@ -47,7 +47,6 @@ function updateBook(id,quantity) {
 // updateBook(3,89087)
 // console.log(inventory);
 
-
 function updateBookWithMap(id,quantity) {
     inventory.map( (element)=> {
         if(element.id==id) {
