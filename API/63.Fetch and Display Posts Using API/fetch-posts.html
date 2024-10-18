@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch and Display Posts Using API</title>
+    <style>
+        #post {
+            box-shadow: 1px 1px 8px grey;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="posts"></div>
+    <template id="template-posts">
+      <div id="post">
+        <p id="userId"></p>
+        <p id="id"></p>
+        <p id="title"></p>
+        <p id="body"></p>
+      </div>
+    </template>
+</body>
+    <script src="./fetch-posts.js"></script>
+</html>
