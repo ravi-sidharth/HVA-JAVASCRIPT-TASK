@@ -11,11 +11,19 @@
     </style>
 </head>
 <body>
-    <h1>Word Meaning</h1>
-    <input type="text" placeholder="Search word meaning">
+    <input type="text" placeholder="serach word meaning" >
     <button>Search</button>
     <div id="word-meaning"></div>
     
+    <template id="template-word-meaning">
+        <div class="box">
+            <p id="definition"></p>
+            <p id="partsOfSpeech"></p>
+            <p id="example"></p>
+            <p id="synonyms"></p>
+            <p id="antonyms"></p>
+        </div>
+    </template>
 </body>
     <script src="./app.js"></script>
 </html>
