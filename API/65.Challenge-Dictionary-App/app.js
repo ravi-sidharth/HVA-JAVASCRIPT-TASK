@@ -23,8 +23,6 @@ async function fetchData(word) {
 }
 
 function showResult(data) {
-  
-
     wordMeaning.innerHTML = ""
     const cloneWord = templateWordMeaning.content.cloneNode(true)
 
