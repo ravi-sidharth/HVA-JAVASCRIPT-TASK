@@ -38,13 +38,13 @@ todoContainer.addEventListener('click', (event) => {
         let priorityLevel = document.getElementById('priorityLevel').value
         console.log(task)
 
-    //         task.innerHTML =`
-    //             <li>Task Title: ${taskTitle}</li>
-    //             <li>Task Description: ${taskDescription}</li>
-    //             <li>Task Due Date: ${taskDueDate}</li>
-    //             <li>Task Priority Level: ${priorityLevel}</li>
-    //             <button class="edit" >Edit</button>
-    //             <button class="delete" >Delete</button>`    
+            task.innerHTML =`
+                <li>Task Title: ${taskTitle}</li>
+                <li>Task Description: ${taskDescription}</li>
+                <li>Task Due Date: ${taskDueDate}</li>
+                <li>Task Priority Level: ${priorityLevel}</li>
+                <button class="edit" >Edit</button>
+                <button class="delete" >Delete</button>`    
     }
 
     if (event.target.classList.contains('delete')) {
