@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>z-index उदाहरण</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            position: relative; /* स्थिति वाले तत्व */
+        }
+
+        .box1 {
+            background-color: red;
+            /* left: 50px; */
+            /* top: 50px; */
+            z-index: 3; /* कम स्टैक ऑर्डर */
+        }
+
+        .box2 {
+            background-color: blue;
+            /* left: 100px; */
+            top: 100px;
+            z-index: 2; /* उच्च स्टैक ऑर्डर */
+        }
+
+        .box3 {
+            background-color: green;
+            /* left: 150px; */
+            /* top: 50px; */
+            z-index: 3; /* सबसे कम स्टैक ऑर्डर */
+        }
+    </style>
+</head>
+<body>
+    <div class="box box1"></div>
+    <div class="box box2"></div>
+    <div class="box box3"></div>
+</body>
+</html>

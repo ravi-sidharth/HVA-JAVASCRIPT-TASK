@@ -16,12 +16,12 @@ function divideNumbers(num1,num2) {
     }
 
     else{
-        return "zero is not divide any number"
+        return "Any number is not divisible by zero"
     }
 }
 
-function performArithmetic (num1,num2,addNumbers) {
-    return addNumbers(num1,num2)
+function performArithmetic (num1,num2,operation) {
+    return operation(num1,num2)
 }
 
 console.log(performArithmetic(5,3,addNumbers));

@@ -1,50 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Management App</title>
     <script src="./app.js" defer ></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<style>
-    div {
-        margin-bottom: 10px;
-    }
 
-</style>
-<body>
+<body >
+    <div class="flex max-w-full justify-center" >
+        <form class="w-70 mt-4 p-5 bg-blue-300 text-center rounded-lg" id="formSubmit" action="#">
 
-    <form id="formSubmit" action="#">
-       
-        <div> 
-            <label for="taskTitle">Task Title: </label>
-            <input type="text" id="taskTitle" required>
-        </div>
-        
-        <div>
-            <label for="taskDescription">Task Description: </label>
-            <textarea type="text" id="taskDescription" required></textarea>
-        </div>
-
-        <div>
-            <label for="taskDueDate">Task Due Date: </label>
-            <input type="date" id="taskDueDate" required>
-        </div>
-
-        <div>
-            <label for="priorityLevel">Priority Level: </label>
-            <select name="level" id="priorityLevel" required> 
+            <label for="taskTitle">Task Title:</label>
+            <br>
+            <input class="mb-3 px-2 border-2 border-black rounded-lg" type="text" id="taskTitle" required>
+            <br>
+    
+            <label for="taskDescription">Task Description:</label>
+            <br>
+            <textarea class="mb-3 px-2 border-2 border-black rounded-lg"  id="taskDescription" required></textarea>
+            <br>
+            <label for="taskDueDate">Task Due Date:</label>
+            <br>
+            <input class="mb-3 px-2 border-2 border-black rounded-lg" type="date" id="taskDueDate" required>
+            <br>
+            <label for="priorityLevel">Priority Level:</label>
+            <br>
+            <select class="mb-3 px-2  border-2 border-black rounded-lg" name="level" id="priorityLevel" required>
                 <option value="" selected disabled>All</option>
                 <option value="low">Low</option>
                 <option value="medium">Medium</option>
                 <option value="high">High</option>
             </select>
-        </div>
-
-        <button type="submit">Add Task</button>
-
-        <div id="todoContainer"></div>
+            <br>
+        <button class="p-1 bg-blue-700 rounded-lg border-2 border-black" type="submit">Add Task</button>
     </form>
+    </div>
+
+    <div class="flex max-w-full gap-5" id="todoContainer"></div>
+
+
 
 </body>
+
 </html>

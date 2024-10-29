@@ -4,7 +4,7 @@ function doubleNumber(number) {
 function squareNumber(number) {
     return number**2
 }
-function increamentNumber(number) {
+function incrementNumber(number) {
     return number+=1
 }
 function performOperation(num,operation) {
@@ -12,4 +12,4 @@ function performOperation(num,operation) {
 }
 console.log(performOperation(5,doubleNumber))
 console.log(performOperation(5,squareNumber))
-console.log(performOperation(5,increamentNumber))
+console.log(performOperation(5,incrementNumber))
