@@ -10,13 +10,13 @@
  </head>
  <body>
     <form action="#" id="formSubmit">
-        <input type="text" placeholder="Enter the city name">
-        <button type="submit">Submit</button>
+        <input class="px-2 border-2 border-black" id="city-name" type="text" placeholder="Enter the city name" required>
+        <button  class="px-2 bg-blue-700 border-2 border-black rounded-lg"type="submit">Submit</button>
     </form>
     <div id="weather-detail">
     </div>
     <template id="weather-template">
-        <div class="p-4 shadow-md bg-blue-600 mb-12">
+        <div class="p-4 shadow-md bg-slate-500 mb-12 box-shadow">
             <div id="data" class="text-xl font-bold" ></div>
             <div id="cityName"></div>
             <div id="date"></div>

@@ -1,4 +1,4 @@
-const input = document.querySelector('input')
+const input = document.querySelector('#city-name')
 const formSubmit = document.querySelector('#formSubmit')
 const apiKey = '84c8a6982ed02cee6d19c6df55534ff2'
 let cityName =""
@@ -24,10 +24,10 @@ async function fetchWeather(cityName) {
 
     const res1 = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`)
     const data1 = await res1.json()
-    // console.log(data1)      
+    console.log(data1)      
     bindWeather(data1)
    } catch(e) {
-        alert(`Error Input city is not exits! ,change another city ${e}`)
+        alert(`Input city is not exists! ,change another city ERROR:${e}`)
    }
 }
 
@@ -43,11 +43,13 @@ function bindWeather(data1) {
     const windSpeed = weatherClone.getElementById('windSpeed')
     const dataHeader = weatherClone.getElementById('data')
 
-    dataHeader.innerText="👇👇Today's weather data is below👇👇"
+    dataHeader.innerText="Today's weather is 👇"
     date.innerText =`Date: ${TodayDate}`
     cityNameEle.innerText =`City Name: ${cityName}`
-    temperature.innerText =`Temperature: ${data1.main.temp} Celcius`
-    description.innerText =`Description: ${data1.weather[0].description}`
+    temperature.innerText =`Temperature: ${data1.main.temp -273.15}° Celcius`
+
+    const iconurl = "http://openweathermap.org/img/w/" + data1.weather[0].icon + ".png";
+    description.innerHTML =`Description: ${data1.weather[0].description} <img class="inline-block" src="${iconurl}" alt="weather icon">`
     humidityPercentage.innerText =`Humidity: ${data1.main.humidity}%`
     windSpeed.innerText =`Wind Speed: ${data1.wind.speed} meter/sec` 
     weatherDetail.appendChild(weatherClone)
@@ -68,16 +70,20 @@ async function forecastWeather() {
             const forcastDate = weatherClone.getElementById('date')
             const temperature= weatherClone.getElementById('temperature')
             const description = weatherClone.getElementById('description')
-            
-            dataHeader.innerText=`👇Day ${count} weather data is Below👇`
+
+            dataHeader.innerText=`Day ${count} expected weather is 👇`
             forcastDate.innerHTML = `Date: ${data2.list[i].dt_txt}`
-            temperature.innerHTML = `Expected Temperature: ${data2.list[i].main.temp} Celcius`
-            description.innerHTML = `Description: ${data2.list[i].weather[0].description} and Icon ${data2.list[i].weather[0].icon}`
+            temperature.innerHTML = `Expected Temperature: ${data2.list[i].main.temp - 273.15}° Celcius`
+
+            const iconurl = "http://openweathermap.org/img/w/" + data2.list[i].weather[0].icon + ".png";
+            description.innerHTML = `Description: ${data2.list[i].weather[0].description}<img class="inline-block" src="${iconurl}" alt="weather icon">`
+          
             weatherDetail.appendChild(weatherClone)
             count++
         }
     } catch(e) {
-        weatherDetail.innerText=`Error API is not working! or ${e}`
+        // weatherDetail.innerText=`${e}`
+        alert(e)
    }
    
 }
