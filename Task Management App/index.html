@@ -10,36 +10,40 @@
 </head>
 
 <body >
+    <h1 class=" m-2 md:1 text-center font-bold text-2xl md:text-5xl">Todo Management App</h1>
     <div class="flex max-w-full justify-center" >
-        <form class="w-70 mt-4 p-5 bg-blue-300 text-center rounded-lg" id="formSubmit" action="#">
+        
+        <form class=" md:w-96 md:mt-4 md:p-5 w-60 bg-blue-300 text-center rounded-lg" id="formSubmit" action="#">
 
-            <label for="taskTitle">Task Title:</label>
+            <label for="taskTitle"><strong class="md:text-2xl">Task Title:</strong></label>
             <br>
-            <input class="mb-3 px-2 border-2 border-black rounded-lg" type="text" id="taskTitle" required>
+            <input class="md:mb-4 md:px-12 md:py-2 mb-2 border-2 border-black rounded-lg" type="text" id="taskTitle" required>
             <br>
     
-            <label for="taskDescription">Task Description:</label>
+            <label for="taskDescription"><strong class="md:text-2xl">Task Description:</strong></label>
             <br>
-            <textarea class="mb-3 px-2 border-2 border-black rounded-lg"  id="taskDescription" required></textarea>
+            <textarea class="md:px-12 md:py-2 mb-2 px-2 border-2 border-black rounded-lg"  id="taskDescription" required></textarea>
             <br>
-            <label for="taskDueDate">Task Due Date:</label>
+            <label for="taskDueDate"><strong class="md:text-2xl">Task Due Date: </strong></label>
             <br>
-            <input class="mb-3 px-2 border-2 border-black rounded-lg" type="date" id="taskDueDate" required>
+            <input class="md:px-12 md:py-2 md:text-2xl md:mb-4 mb-2 px-2 border-2 border-black rounded-lg" type="date" id="taskDueDate" required>
             <br>
-            <label for="priorityLevel">Priority Level:</label>
+            <label for="priorityLevel"><strong class="md:text-2xl">Priority Level:</strong></label>
             <br>
-            <select class="mb-3 px-2  border-2 border-black rounded-lg" name="level" id="priorityLevel" required>
+            <select class="md:px-12 md:py-2 md:text-2xl md:mb-4 mb-2 px-2  border-2 border-black rounded-lg" name="level" id="priorityLevel" required>
                 <option value="" selected disabled>All</option>
                 <option value="low">Low</option>
                 <option value="medium">Medium</option>
                 <option value="high">High</option>
             </select>
             <br>
-        <button class="p-1 bg-blue-700 rounded-lg border-2 border-black" type="submit">Add Task</button>
+        <button class="md:px-3 md:py-2 mt-2 mb-4 p-1 bg-blue-700 rounded-lg border-2 border-black" type="submit">Add Task</button>
     </form>
     </div>
 
-    <div class="max-w-full flex flex-wrap gap-5" id="todoContainer"></div>
+    <div class="max-w-full flex justify-center flex-wrap gap-5" id="todoContainer"></div>
+   
+    
 </body>
 
 </html>
