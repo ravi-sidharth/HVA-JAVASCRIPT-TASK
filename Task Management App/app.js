@@ -1,5 +1,6 @@
 let todos = JSON.parse(localStorage.getItem('todos'))
 let editingIndex = -1
+let filterTodos = []
 
 let formSubmit = document.getElementById('formSubmit')
 let submitBtn = document.querySelector('button')
@@ -15,8 +16,9 @@ formSubmit.addEventListener('submit',(event)=> {
         taskTitle: taskTitle.value.trim(),
         taskDescription: taskDescription.value.trim(),
         taskDueDate: taskDueDate.value.trim(),
-        priorityLevel: priorityLevel.value.trim()
-    };
+        priorityLevel: priorityLevel.value.trim(),
+        taskCompleted: false
+    }
 
     if (editingIndex >= 0) {
         // Update existing todo
@@ -43,8 +45,10 @@ function clearForm() {
 function editTodo(index){
     const task = todos[index]
     // console.log(task)
+
     taskTitle.value = task.taskTitle;
     // console.log(task.taskTitle)
+
     taskDescription.value = task.taskDescription;
     // console.log(task.taskDescription)
 
@@ -53,7 +57,6 @@ function editTodo(index){
 
     priorityLevel.value = task.priorityLevel;
     // console.log(task.priorityLevel)
-
 
     editingIndex=index
     submitBtn.textContent="Update Task"
@@ -72,14 +75,90 @@ function deleteTodo(index) {
     renderTodos()
 }
 
-function renderTodos() {
-    const todoList = document.getElementById('todoContainer')
-    todoList.innerHTML=""
+function completeTodo(index) {
+    // Toggle the task's completed status
+    // todos[index].taskCompleted = !todos[index].taskCompleted;
+
+    if (todos[index].taskCompleted) {
+        todos[index].taskCompleted = false;
+    } else {
+        todos[index].taskCompleted = true;
+    }
+    saveTodosToLocalStorage();
+    renderTodos();
+}
+
+
+// For data filter function 
+const filterTasks = document.getElementById('filterTasks')
+filterTasks.addEventListener('click',(e)=>{
+    filterTodos=[]
+
+    if (e.target.value=="low"){
+        todos.forEach(todo=> {
+            if(todo.priorityLevel=="low") {
+                filterTodos.push(todo)
+            }
+        })
+    }
+
+    else if (e.target.value=="medium"){
+        todos.forEach(todo=> {
+            if(todo.priorityLevel=="medium") {
+                filterTodos.push(todo)
+            }
+        })
+    }
+
+    else if (e.target.value=="high"){
+        todos.forEach(todo=> {
+            if(todo.priorityLevel=="high") {
+                filterTodos.push(todo)
+            }
+        })
+    }
+
+    else if (e.target.value=="7daysTask"){
+        todos.forEach(todo=> {
+            const todayDate = new Date().getDate()
+            // console.log(todayDate)
+            console.log(todo.taskDueDate)
+            const taskDate =new Date(todo.taskDueDate).getDate()
+            // console.log(taskDate)
+            if(taskDate>todayDate && taskDate<=(todayDate+7)) {
+                filterTodos.push(todo)
+            }
+        })
+    }
     
-    todos.forEach((todo,index)=> {
+    else if (e.target.value=="pending"){
+        todos.forEach(todo=> {
+            if(todo.taskCompleted==false){
+                filterTodos.push(todo)
+            }
+        })
+    }
+    
+    else if (e.target.value=="completed"){
+        todos.forEach(todo=> {
+            if(todo.taskCompleted==true) {
+                filterTodos.push(todo)
+            }
+        })
+    }
+    saveTodosToLocalStorage();
+    renderFilterTodos();
+})
+
+
+function renderFilterTodos() {
+    const todoList = document.getElementById('pendingTask')
+    todoList.innerHTML=""
+
+    filterTodos.forEach((todo,index)=> {
         const list = document.createElement('div')
-        list.className ="bg-fuchsia-500 rounded-lg mt-6 p-3 border-2"
-        
+        const checked =todo.taskCompleted ? 'checked' : '';
+
         list.innerHTML =`
         <ul>
             <li><strong>Task Title:</strong> ${todo.taskTitle}</li>
@@ -89,9 +168,47 @@ function renderTodos() {
         </ul>
             <button class="text-white p-1 bg-yellow-700 rounded-lg mr-2" onclick="editTodo(${index})">Edit</button>
             <button class="text-white p-1 bg-red-700 rounded-lg" onclick="deleteTodo(${index})">Delete</button>
-            <button class="text-white mx-2 p-1 bg-green-700 rounded-lg"><input onclick="completeTodo(${index})" type="checkbox">Completed</button>
+            <button class="text-white mx-2 p-1 bg-green-700 rounded-lg"><input onclick="completeTodo(${index})" class="text-blue" type="checkbox" ${checked}>Completed</button>
         `
-       todoList.appendChild(list)
+        if (todo.taskCompleted) {
+            list.className ="bg-slate-900 rounded-lg mt-6 p-3 border-2 opacity-0.2 lowercase line-through"
+            todoList.appendChild(list);
+        } else {
+            todoList.prepend(list);
+            list.className ="bg-fuchsia-500 rounded-lg mt-6 p-3 border-2 uppercase"
+        }
+    })
+    
+}
+
+
+
+function renderTodos() {
+    const todoList = document.getElementById('pendingTask')
+    todoList.innerHTML=""
+    
+    todos.forEach((todo,index)=> {
+        const list = document.createElement('div')
+        const checked =todo.taskCompleted ? 'checked' : '';
+
+        list.innerHTML =`
+        <ul>
+            <li><strong>Task Title:</strong> ${todo.taskTitle}</li>
+            <li><strong>Task Description:</strong> ${todo.taskDescription}</li>
+            <li><strong>Task Due Date:</strong> ${todo.taskDueDate}</li>
+            <li><strong>Priority Level:</strong> ${todo.priorityLevel}</li>
+        </ul>
+            <button class="text-white p-1 bg-yellow-700 rounded-lg mr-2" onclick="editTodo(${index})">Edit</button>
+            <button class="text-white p-1 bg-red-700 rounded-lg" onclick="deleteTodo(${index})">Delete</button>
+            <button class="text-white mx-2 p-1 bg-green-700 rounded-lg"><input onclick="completeTodo(${index})" class="text-blue" type="checkbox" ${checked}>Completed</button>
+        `
+        if (todo.taskCompleted) {
+            list.className ="bg-slate-900 rounded-lg mt-6 p-3 border-2 opacity-0.2 lowercase line-through"
+            todoList.appendChild(list);
+        } else {
+            todoList.prepend(list);
+            list.className ="bg-fuchsia-500 rounded-lg mt-6 p-3 border-2 uppercase"
+        }
     })
 }
 
@@ -105,4 +222,4 @@ window.onload = function() {
 
 
 
-//there are still a few features missing to fully meet the task requirements. Consider adding the functionality to mark tasks as completed and move them to a separate section. Additionally, implementing a filter feature to view tasks based on priority, due date, or completion status would enhance the app's usability. Lastly, to ensure tasks persist after a page reload, you might want to look into using localStorage. Keep up the good work! 😊
+// . Additionally, implementing a filter feature to view tasks based on priority, due date, or completion status would enhance the app's usability. Lastly, to ensure tasks persist after a page reload, you might want to look into using localStorage. Keep up the good work! 😊

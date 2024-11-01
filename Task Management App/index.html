@@ -9,11 +9,11 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body >
+<body class="bg-slate-700">
     <h1 class=" m-2 md:1 text-center font-bold text-2xl md:text-5xl">Todo Management App</h1>
-    <div class="flex max-w-full justify-center" >
+    <div class="flex max-w-full justify-center " >
         
-        <form class=" md:w-96 md:mt-4 md:p-5 w-60 bg-blue-300 text-center rounded-lg" id="formSubmit" action="#">
+        <form class=" md:w-96 md:mt-4 md:p-5 w-60 bg-blue-300 text-center rounded-lg shadow-slate-800" id="formSubmit" action="#">
 
             <label for="taskTitle"><strong class="md:text-2xl">Task Title:</strong></label>
             <br>
@@ -40,8 +40,23 @@
         <button class="md:px-3 md:py-2 mt-2 mb-4 p-1 bg-blue-700 rounded-lg border-2 border-black" type="submit">Add Task</button>
     </form>
     </div>
+    
+    <div class="w-96 m-auto rounded-lg p-4 flex justify-center gap-5 bg-slate-400 mt-6"> <h1 class="text-2xl font-bold text-red-600">Filter Tasks</h1>
+        <select id="filterTasks" class="rounded-lg w-40" name="filterTasks" >
+            <option value="" selected disabled>All</option>
+            <option value="low">Low Priority Task</option>
+            <option value="medium">Medium Priority Task</option>
+            <option value="high">High Priority Task</option>
+            <option value="7daysTask">Next 7 days task</option>
+            <option value="pending">Pending Task</option>
+            <option value="completed">Completed Task</option>
+        </select>
+    </div>
 
-    <div class="max-w-full flex justify-center flex-wrap gap-5" id="todoContainer"></div>
+    <div class="max-w-full flex justify-center flex-wrap gap-5" id="pendingTask">
+        <h1 class="text-xl border-2 p-4 mb-8 bg-white text-black">Pending Task List</h1>
+    </div>
+    <div class="max-w-full flex justify-center flex-wrap gap-5" id="completedTask"></div>
    
     
 </body>
